@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <title>send_data</title>
+    </head>
+    <body>
+        <font size="5">データ送信</font>
+        <br><br>
+        <b>＜支社・機器を選択の上、日時と目視値を入力してください＞</b>
+        <br>
+        <form class="form-horizontal" action='./output' method="POST">
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">支社・機器</label>
+                <div class="col-sm-3">
+                    <select class="custom-select" name="kiki" required>
+                    <option>O支社 WC-1</option>
+                    <option>O支社 BC-1</option>
+                    <option>K支社 R-1</option>
+                    <option>K支社 AHP-1</option>
+                    <option>K支社 AHP-2</option>
+                    <option>I支社 CR-1</option>
+                    <option>I支社 AHP-1</option>
+                    <option>I支社 AHP-2</option>
+                    <option>その他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">日時</label>
+                <div class="col-sm-3">
+                    <input type="datetime-local" class="form-control" name="daytime" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">電流[A]</label>
+                <div class="col-sm-3">
+                    <input type="number" step="0.1" class="form-control" name="current" placeholder="0.0" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">高圧[MPa]</label>
+                <div class="col-sm-3">
+                    <input type="number" step="0.01" class="form-control" name="h_pressure" placeholder="0.0" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">低圧[MPa]</label>
+                <div class="col-sm-3">
+                    <input type="number" step="0.01" class="form-control" name="l_pressure" placeholder="0.0" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">入口温度[℃]</label>
+                <div class="col-sm-3">
+                    <input type="number" step="0.1" class="form-control" name="in_temp" placeholder="0.0" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">出口温度[℃]</label>
+                <div class="col-sm-3">
+                    <input type="number" step="0.1" class="form-control" name="out_temp" placeholder="0.0" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 control-label">外気温[℃]</label>
+                <div class="col-sm-3">
+                    <input type="number" step="0.1" class="form-control" name="outside_temp" placeholder="0.0" required>
+                </div>
+            </div>
+            <b>＜不具合がある場合は、下記をチェックし詳細を記入してください＞</b>
+            <br>
+            不具合の種類
+            <br>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check1" name="check1">
+                <label class="form-check-label" for="check1">外観の状況</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check2" name="check2">
+                <label class="form-check-label" for="check2">電気系統</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check3" name="check3">
+                <label class="form-check-label" for="check3">圧力計</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check4" name="check4">
+                <label class="form-check-label" for="check4" >安全弁</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check5" name="check5">
+                <label class="form-check-label" for="check5">送風機</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check6" name="check6"> 
+                <label class="form-check-label" for="check6" >熱交換器（空気側）</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check7" name="check7">
+                <label class="form-check-label" for="check7">冷媒系統</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check8" name="check8">
+                <label class="form-check-label" for="check8">潤滑油系統</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check9" name="check9">
+                <label class="form-check-label" for="check9">水系統</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check10" name="check10">
+                <label class="form-check-label" for="check10">排水系統</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check11" name="check11">
+                <label class="form-check-label" for="check11">保温保冷材</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check12" name="check12">
+                <label class="form-check-label" for="check12">保安装置</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check13" name="check13">
+                <label class="form-check-label" for="check13">音及び振動</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check14" name="check14">
+                <label class="form-check-label" for="check14">電気関係</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check15" name="check15">
+                <label class="form-check-label" for="check15">冷媒ガス</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check16" name="check16">
+                <label class="form-check-label" for="check16">冷凍機油</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check17">
+                <label class="form-check-label" for="check17" name="check17">熱交換状況</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check18" name="check18">
+                <label class="form-check-label" for="check18">制御</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check19" name="check19">
+                <label class="form-check-label" for="check19">除霜装置</label>
+            </div>
+            <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="check20" name="check20">
+                <label class="form-check-label" for="check20">冷温水系統</label>
+            </div>
+            <br><br>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="textarea1">不具合の詳細</label>
+                    <textarea id="textarea1" class="form-control" name="text"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">データ送信</button>
+                </div>
+            </div>
+        </form>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    </body>
+</html>

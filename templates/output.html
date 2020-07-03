@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <title>output_data</title>
+    </head>
+    <body>
+
+        <font size="5">＜診断結果＞</font>
+        <table class="table table-sm table-bordered">
+            <caption>診断結果</caption>
+            <tr class="table-dark"><th>item</th><th>score</th></tr>
+            <tr class="table-info"><td>診断結果 F1 （不調）</td><th>{{score.F1}}</th></tr>
+            <tr class="table-info"><td>診断結果 F2 （温水異常あり）</td><th>{{score.F2}}</th></tr>
+            <tr class="table-info"><td>診断結果 F3 （圧縮機油汚れ→油不足）</td><th>{{score.F3}}</th></tr>
+            <tr class="table-info"><td>診断結果 F4 （上部送風機より異音）</td><th>{{score.F4}}</th></tr>
+            <tr class="table-info"><td>診断結果 F5 （ファン異音あり）</td><th>{{score.F5}}</th></tr>
+            <tr class="table-info"><td>診断結果 F6 （故障）</td><th>{{score.F6}}</th></tr>
+            <tr class="table-info"><td>診断結果 F7 （高圧カット故障中）</td><th>{{score.F7}}</th></tr>
+            <tr class="table-info"><td>診断結果 F8 （警報発生）</td><th>{{score.F8}}</th></tr>
+            <tr class="table-info"><td>診断結果 F9 （水冷チラー警報発報）</td><th>{{score.F9}}</th></tr>
+            <tr class="table-info"><td>診断結果 F10 （時々アラーム）</td><th>{{score.F10}}</th></tr>
+            <tr class="table-info"><td>診断結果 F11 （膨張弁霜付きあり、圧縮機異音）</td><th>{{score.F11}}</th></tr>
+        </table>  
+
+        <font size="5">＜入力内容＞</font>
+        <table class="table table-sm table-bordered">
+            <caption>input data</caption>
+            <tr class="table-dark"><th>item</th><th>data</th></tr>
+            <tr class="table-info"><td>機器</td><td>{{req.kiki}}</td></tr>
+            <tr class="table-info"><td>日時</td><td>{{req.daytime}}</td></tr>
+            <tr class="table-success"><td>電流[A]</td><td>{{req.current}}</td></tr>
+            <tr class="table-success"><td>高圧[MPa]</td><td>{{req.h_pressure}}</td></tr>
+            <tr class="table-success"><td>低圧[MPa]</td><td>{{req.l_pressure}}</td></tr>
+            <tr class="table-success"><td>入口温度[℃]</td><td>{{req.in_temp}}</td></tr>
+            <tr class="table-success"><td>出口温度[℃]</td><td>{{req.out_temp}}</td></tr>
+            <tr class="table-success"><td>外気温[℃]</td><td>{{req.outside_temp}}</td></tr>
+            <tr><td>外観の状況</td><td>{{req.check1}}</td></tr>
+            <tr><td>電気系統</td><td>{{req.check2}}</td></tr>
+            <tr><td>圧力計</td><td>{{req.check3}}</td></tr>
+            <tr><td>安全弁</td><td>{{req.check4}}</td></tr>
+            <tr><td>送風機</td><td>{{req.check5}}</td></tr>
+            <tr><td>熱交換器（空気側）</td><td>{{req.check6}}</td></tr>
+            <tr><td>冷媒系統</td><td>{{req.check7}}</td></tr>
+            <tr><td>潤滑油系統</td><td>{{req.check8}}</td></tr>
+            <tr><td>水系統</td><td>{{req.check9}}</td></tr>
+            <tr><td>排水系統</td><td>{{req.check10}}</td></tr>
+            <tr><td>保温保冷材</td><td>{{req.check11}}</td></tr>
+            <tr><td>保安装置</td><td>{{req.check12}}</td></tr>
+            <tr><td>音及び振動</td><td>{{req.check13}}</td></tr>
+            <tr><td>電気関係</td><td>{{req.check14}}</td></tr>
+            <tr><td>冷媒ガス</td><td>{{req.check15}}</td></tr>
+            <tr><td>冷凍機油</td><td>{{req.check16}}</td></tr>
+            <tr><td>熱交換状況</td><td>{{req.check17}}</td></tr>
+            <tr><td>制御</td><td>{{req.check18}}</td></tr>
+            <tr><td>除霜装置</td><td>{{req.check19}}</td></tr>
+            <tr><td>冷温水系統</td><td>{{req.check20}}</td></tr>
+            <tr><td>不具合の詳細</td><td>{{req.text}}</td></tr>
+        </table>
+
+        <p><a href="/">入力画面に戻る</a></p>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    </body>
+</html>
