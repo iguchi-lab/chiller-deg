@@ -51,10 +51,13 @@ def index():
 @app.route('/output', methods=['POST'] )
 def output():
     req = request.form
-    print(req)
     input_A, input_Ph, input_Pl, input_To, input_dP, input_dT = get_inputdata(req['kiki'], float(req['current']), float(req['h_pressure']), float(req['l_pressure']), float(req['in_temp']), float(req['out_temp']), float(req['outside_temp']))
     score = get_result(input_A, input_Ph, input_Pl, input_To, input_dP, input_dT)
     return render_template('output.html', req = req, score = score)
+
+@app.route('/send')
+def send():
+    return render_template('send.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
